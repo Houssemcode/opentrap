@@ -2,7 +2,7 @@
 
 # 🛡️ OpenTrap for YouTube
 
-**A privacy-first, local-only browser extension to declutter and focus your YouTube experience.**  
+**A privacy-first, local-only browser extension to declutter, focus, and capture knowledge from YouTube.**  
 *Free, open-source alternative to UnTrap.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
@@ -15,8 +15,10 @@
 
 <p align="center">
   <a href="#-key-features">Features</a> •
+  <a href="#-study--knowledge-capture">Study Tools</a> •
+  <a href="#-behavioral-friction--anti-addiction">Focus Engine</a> •
   <a href="#-focus-profiles">Profiles</a> •
-  <a href="#-zero-flicker-architecture">Architecture</a> •
+  <a href="#-zero-flicker--continuous-dom-lock-architecture">Architecture</a> •
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-all-available-rules">All Rules</a> •
   <a href="#-privacy--security">Privacy</a>
@@ -28,7 +30,7 @@
 
 ## 💡 Overview
 
-**OpenTrap for YouTube** empowers you to surgically eliminate distracting UI elements, sanitize clickbait thumbnails, redirect addictive feeds (like Shorts and the Homepage), and swap between tailored focus profiles.
+**OpenTrap for YouTube** empowers you to surgically eliminate distracting UI elements, sanitize clickbait thumbnails, redirect addictive feeds (like Shorts and the Homepage), limit daily screen time, and streamline your study workflow with instant Markdown timestamps and frame captures.
 
 Unlike other extensions that rely on slow JavaScript `MutationObserver` insertions or premium subscriptions with external tracking, OpenTrap is **100% free, local-only, and engineered for zero page-load flicker (FOUC).**
 
@@ -37,7 +39,12 @@ Unlike other extensions that rely on slow JavaScript `MutationObserver` insertio
 ## ✨ Key Features
 
 - ⚡ **Zero-Flicker Architecture:** Static CSS engine injected at `document_start` driven by `data-ot-*` attributes on `<html>`. Distractions vanish before the first frame paints.
+- 🔒 **Continuous DOM-Lock:** Re-asserts styles across `DOMContentLoaded`, `window.load`, YouTube SPA route transitions, and auto-restores attributes if modified.
 - 🎯 **30+ Surgical Toggles:** Granular controls for Homepage, Shorts, Watch Player, Comments, Thumbnails, and Navigation.
+- 📝 **1-Click Markdown Timestamps (`Alt + M`):** Extracts playback time, video title, and active chapter into customizable Markdown or Obsidian callout blocks.
+- 📄 **Clean Transcript Extractor (`Alt + T`):** Instant caption extraction directly to clipboard in clean paragraphs, timestamped lines, or bulleted notes.
+- 📸 **Native Resolution Frame Snapshot (`Alt + S`):** Captures the raw HTML5 `<video>` canvas at native resolution without playbars or overlays into clipboard/PNG.
+- 🔘 **In-Player Study Buttons:** Optional minimalist `[MD]`, `[TR]`, and `[SNAP]` controls injected directly into YouTube's player bar.
 - 🔐 **Settings Friction Lock:** Mindful cooldown timer + anti-paste typing challenge prevents impulse-disabling of focus rules.
 - ⏰ **Scheduled Focus Windows:** Automatic time-of-day and day-of-week profile switching via local `browser.alarms`.
 - ⏳ **Daily Watch-Time Budget:** Accurate active-playback meter with automatic hard-block overlay when daily limits expire.
@@ -46,7 +53,25 @@ Unlike other extensions that rely on slow JavaScript `MutationObserver` insertio
 - 🎨 **1-Click Focus Presets:** Instant switching between *Deep Focus*, *Study/Research*, *Minimalist*, and *Custom* modes.
 - 🔍 **Instant Search Filter:** Quickly locate and toggle any setting in real-time with keyboard shortcut support (`/`).
 - 💾 **Local Backup & Restore:** Export and import your entire configuration as a clean JSON file with zero cloud lock-in.
-- 🔒 **Zero Telemetry:** No analytics, no remote scripts, and zero network calls. Everything stays strictly inside `browser.storage.local`.
+- 🛡️ **Zero Telemetry:** No analytics, no remote scripts, and zero network calls. Everything stays strictly inside `browser.storage.local`.
+
+---
+
+## 🎓 Study & Knowledge Capture
+
+Transform YouTube into a high-efficiency research and learning environment with built-in capture tools:
+
+| Shortcut | Action | Description | Output Example |
+|---|---|---|---|
+| **`Alt + M`** | **Copy Markdown Timestamp** | Copies playback time + video title + active chapter as a formatted link. | `[14:22 - Setting up Vector DB](https://youtu.be/xyz?t=862)` |
+| **`Alt + T`** | **Copy Clean Transcript** | Fetches official captions directly from `json3` tracks and strips filler. | Formatted paragraphs, `[MM:SS]` lines, or Markdown bullets. |
+| **`Alt + S`** | **Clean Frame Snapshot** | Grabs the current video frame at source resolution (`videoWidth` × `videoHeight`). | Offscreen Canvas `image/png` copied to clipboard (zero UI overlay). |
+
+### 🛠️ Study Settings in Popup
+- **Customizable Markdown Template:** Supports dynamic tokens: `{{timestamp}}`, `{{chapter}}`, `{{title}}`, `{{url}}`, and `{{seconds}}`. Includes presets for **Standard Markdown Links**, **Obsidian Callout Blocks** (`> [!video]`), and **Bullet Lists**.
+- **Pause on Capture:** Automatically pauses playback when taking a screenshot or copying a timestamp.
+- **Player Bar Integration:** Injects subtle, minimalist `[MD]`, `[TR]`, and `[SNAP]` buttons directly into `.ytp-right-controls`.
+- **Input Focus Safety:** Hotkeys automatically ignore keystrokes when typing inside search boxes, comments, or inputs.
 
 ---
 
@@ -63,7 +88,27 @@ Switch between distraction levels with a single click from the popup header:
 
 ---
 
-## 🏗️ Zero-Flicker Architecture
+## 🛑 Behavioral Friction & Anti-Addiction
+
+OpenTrap provides built-in psychological and physical barriers against mindless video consumption:
+
+### 1. Settings Friction Lock
+- **Cooldown Delay:** Enforces a configurable pause (e.g., 15 seconds) before you can modify or disable extension settings.
+- **Typing Challenge:** Requires character-by-character manual typing of an unambiguous random string (32, 48, or 64 characters) to unlock settings for 5 minutes.
+- **Anti-Cheat Enforcement:** Blocks clipboard pasting (`onPaste`), dragging & dropping (`onDrop`), and right-click paste.
+
+### 2. Daily Watch-Time Budget
+- **Active Playback Tracking:** Accurately measures elapsed seconds only when a `<video class="html5-main-video">` is playing and the tab is visible.
+- **Hard-Block Overlay:** When the budget is reached, automatically pauses playback and renders a full-screen `#ot-time-limit-overlay` preventing further viewing until midnight.
+- **Live Progress Meter:** Visual indicator in the popup displaying minutes used vs. daily budget.
+
+### 3. Scheduled Profiles
+- Automates focus modes during work or study hours (e.g., *Monday–Friday, 08:00–17:00 → Study Profile*).
+- Evaluates rules automatically every 60 seconds via `browser.alarms`.
+
+---
+
+## 🏗️ Zero-Flicker & Continuous DOM-Lock Architecture
 
 Most ad blockers or UI cleaners cause annoying layout shifts (FOUC) because they query the DOM via JavaScript after elements have already appeared. 
 
@@ -89,7 +134,8 @@ OpenTrap solves this with an attribute-driven CSS architecture:
 
 1. **Static Injection:** The master stylesheet is registered directly in the browser's Manifest V3 `content_scripts.css` array.
 2. **Instant Paint:** The stylesheet is evaluated by the browser engine concurrently with HTML parsing.
-3. **Master Power Toggle:** Removing `data-ot-enabled="true"` from `<html>` instantly restores native YouTube without requiring a page reload.
+3. **Continuous DOM-Lock:** A `MutationObserver` on `document.documentElement` monitors attribute integrity, ensuring styles stay applied across page reloads and YouTube SPA updates.
+4. **Master Power Toggle:** Removing `data-ot-enabled="true"` from `<html>` instantly restores native YouTube without requiring a page reload.
 
 ---
 
@@ -177,6 +223,31 @@ OpenTrap solves this with an attribute-driven CSS architecture:
 
 </details>
 
+<details>
+<summary><b>7. Focus & Anti-Addiction (Behavioral Controls)</b></summary>
+<br>
+
+| Setting | Mode / Storage | Description |
+|---|---|---|
+| **Friction Lock** | `frictionLock` | Forces cooldown countdown + anti-paste typing challenge to alter settings. |
+| **Watch-Time Limit** | `watchTime` | Pauses video and blocks player with full-screen overlay once budget is reached. |
+| **Scheduled Profiles** | `schedules` | Automated profile changes by day and time window via `browser.alarms`. |
+
+</details>
+
+<details>
+<summary><b>8. Study Tools (Capture & Note-taking)</b></summary>
+<br>
+
+| Setting | Trigger | Description |
+|---|---|---|
+| **Copy Markdown Timestamp** | `Alt + M` / `[MD]` | Copies playback position with chapter & title using customizable template. |
+| **Copy Clean Transcript** | `Alt + T` / `[TR]` | Extracts video subtitles formatted as paragraphs, timestamps, or bullets. |
+| **Snapshot Video Frame** | `Alt + S` / `[SNAP]` | Copies clean native-resolution frame to clipboard without UI artifacts. |
+| **Pause on Capture** | Setting | Automatically halts playback when any capture tool is invoked. |
+
+</details>
+
 ---
 
 ## 🚀 Quick Start
@@ -247,22 +318,28 @@ npm run zip:firefox
 ```text
 opentrap-yt/
 ├── entrypoints/
-│   ├── background.ts               # Service worker: default settings init & badge state
+│   ├── background.ts               # Background service worker: alarms, badge, schedule synchronization
 │   ├── youtube.content/
-│   │   ├── index.ts                # document_start content script: attribute sync & SPA router
-│   │   └── style.css               # Master CSS engine keyed to html[data-ot-*] selectors
+│   │   ├── index.ts                # document_start content script: attribute sync, player buttons, hotkeys
+│   │   └── style.css               # Master CSS selector engine keyed to html[data-ot-*]
 │   └── popup/
 │       ├── index.html              # Popup HTML root
 │       ├── main.tsx                # React root mount
-│       ├── App.tsx                 # Full minimalist popup UI with search & tabs
+│       ├── App.tsx                 # Popup UI: tabs, search, profiles, friction lock integration
 │       └── style.css               # Tailwind directives & dark theme utilities
 ├── src/
-│   ├── types/
-│   │   └── settings.ts             # TypeScript definitions for rules, categories & profiles
+│   ├── components/
+│   │   ├── FocusGuardTab.tsx       # Focus tab: watch-time meter, schedules, friction config
+│   │   ├── FrictionUnlockModal.tsx # Anti-paste typing challenge modal + wait timer
+│   │   └── StudyToolsTab.tsx       # Study tab: template presets, transcript format, capture settings
 │   ├── constants/
-│   │   └── registry.ts             # Single source of truth: 30+ toggles, presets, and metadata
+│   │   └── registry.ts             # Central source of truth: 30+ toggles, presets, and metadata
+│   ├── types/
+│   │   └── settings.ts             # TypeScript definitions for rules, schedules, and capture config
 │   └── utils/
-│       └── storage.ts              # Typed wrapper for browser.storage.local & JSON import/export
+│       ├── focusEngine.ts          # Friction calculation, schedule evaluator, and budget tracker
+│       ├── studyCapture.ts         # Timestamp formatting, frame grabber, transcript parser, toasts
+│       └── storage.ts              # Resilient wrapper for browser.storage.local & JSON import/export
 ├── public/
 │   └── icon/                       # Extension icons (16, 32, 48, 96, 128 px)
 ├── package.json
