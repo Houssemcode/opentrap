@@ -1,0 +1,12 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "strict": true,
+    "exactOptionalPropertyTypes": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
