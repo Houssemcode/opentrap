@@ -1,7 +1,7 @@
 // src/components/FocusGuardTab.tsx
 import React from 'react';
 import { Lock, Clock, Calendar, Plus, Trash2 } from 'lucide-react';
-import { SettingsState, ScheduleRule, DayOfWeek, ProfileId } from '../types/settings';
+import type { SettingsState, ScheduleRule, DayOfWeek, ProfileId } from '../types/settings';
 
 interface Props {
   settings: SettingsState;

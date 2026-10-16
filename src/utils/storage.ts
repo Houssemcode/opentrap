@@ -3,7 +3,8 @@ import type { Settings } from '../types/settings';
 
 function isContextValid(): boolean {
   try {
-    if (typeof chrome !== 'undefined' && chrome.runtime && !chrome.runtime.id) {
+    const chromeApi = (globalThis as unknown as { chrome?: { runtime?: { id?: string } } }).chrome;
+    if (chromeApi?.runtime && !chromeApi.runtime.id) {
       return false;
     }
     return true;

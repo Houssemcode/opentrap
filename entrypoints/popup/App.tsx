@@ -8,7 +8,7 @@ import {
   MessageSquare,
   Image,
   Navigation,
-  Settings,
+  Settings as SettingsIcon,
   Download,
   Upload,
   RotateCcw,
@@ -450,7 +450,7 @@ const TABS: { id: TabName; label: string; icon: React.ReactNode }[] = [
   { id: 'navigation', label: 'Nav',       icon: <Navigation size={16} /> },
   { id: 'focus',      label: 'Focus',     icon: <Shield size={16} /> },
   { id: 'study',      label: 'Study',     icon: <BookOpen size={16} /> },
-  { id: 'settings',   label: 'Settings',  icon: <Settings size={16} /> },
+  { id: 'settings',   label: 'Settings',  icon: <SettingsIcon size={16} /> },
 ];
 
 const PROFILE_PILLS: { id: ProfileName; label: string }[] = [

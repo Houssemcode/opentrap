@@ -1,5 +1,4 @@
-// src/utils/focusEngine.ts
-import { SettingsState, ScheduleRule, ProfileId } from '../types/settings';
+import type { SettingsState, ScheduleRule, ProfileId } from '../types/settings';
 import { PRESET_PROFILES } from '../constants/registry';
 
 /**
@@ -35,7 +34,7 @@ export function generateFrictionPhrase(length = 40): string {
  */
 function parseTimeMinutes(hhmm: string): number {
   const [h, m] = hhmm.split(':').map(Number);
-  return h * 60 + m;
+  return (h ?? 0) * 60 + (m ?? 0);
 }
 
 /**

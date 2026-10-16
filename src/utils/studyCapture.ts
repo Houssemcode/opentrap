@@ -1,5 +1,4 @@
-// src/utils/studyCapture.ts
-import { StudyToolsConfig } from '../types/settings';
+import type { StudyToolsConfig } from '../types/settings';
 
 /**
  * Displays a minimalist floating toast inside the YouTube viewport
@@ -177,7 +176,7 @@ async function fetchCaptionSegments(): Promise<Array<{ start: number; text: stri
       const parts = timeStr.split(':').map(Number);
       const seconds =
         parts.length === 3
-          ? parts[0] * 3600 + parts[1] * 60 + parts[2]
+          ? (parts[0] ?? 0) * 3600 + (parts[1] ?? 0) * 60 + (parts[2] ?? 0)
           : (parts[0] || 0) * 60 + (parts[1] || 0);
       if (textStr) list.push({ start: seconds, text: textStr });
     });
@@ -187,7 +186,7 @@ async function fetchCaptionSegments(): Promise<Array<{ start: number; text: stri
   // Strategy B: Parse captionTracks from page HTML / ytInitialPlayerResponse
   const html = document.documentElement.innerHTML;
   const match = html.match(/"captionTracks":(\[.*?\])/);
-  if (!match) return null;
+  if (!match || !match[1]) return null;
 
   try {
     const tracks = JSON.parse(match[1]) as Array<{ baseUrl: string; languageCode: string }>;
@@ -195,6 +194,7 @@ async function fetchCaptionSegments(): Promise<Array<{ start: number; text: stri
 
     const preferred =
       tracks.find((t) => t.languageCode.startsWith('en')) || tracks[0];
+    if (!preferred) return null;
     const json3Url = `${preferred.baseUrl}&fmt=json3`;
 
     const res = await fetch(json3Url);

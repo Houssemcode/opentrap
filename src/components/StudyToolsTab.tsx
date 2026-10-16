@@ -1,7 +1,7 @@
 // src/components/StudyToolsTab.tsx
 import React from 'react';
 import { BookOpen, Link2, FileText, Camera, Sparkles } from 'lucide-react';
-import { SettingsState, TranscriptFormat } from '../types/settings';
+import type { SettingsState, TranscriptFormat } from '../types/settings';
 
 interface Props {
   settings: SettingsState;

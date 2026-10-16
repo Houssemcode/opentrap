@@ -1,0 +1,339 @@
+/* =============================================================================
+   OpenTrap for YouTube — Master CSS Engine
+   All rules are scoped behind html[data-ot-enabled="true"] so disabling
+   the master switch immediately restores native YouTube without a reload.
+   ============================================================================= */
+
+/* ── Home Feed ───────────────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"][data-ot-page-home="true"] ytd-browse #primary,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"][data-ot-page-home="true"] ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"][data-ot-page-home="true"] #contents.ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"][data-ot-page-home="true"] ytd-two-column-browse-results-renderer #primary,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"] ytd-browse[page-subtype="home"] #primary,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"] ytd-browse[page-subtype="home"] ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"] ytd-browse[page-subtype="home"] #contents,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"] ytd-two-column-browse-results-renderer[page-subtype="home"] #primary,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"] ytd-two-column-browse-results-renderer[page-subtype="home"] ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-feed="true"] ytd-browse:not([page-subtype="subscriptions"]):not([page-subtype="channels"]):not([page-subtype="history"]) ytd-rich-grid-renderer {
+  display: none !important;
+}
+
+/* ── Home Category Chips ─────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"][data-ot-page-home="true"] ytd-feed-filter-chip-bar-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"][data-ot-page-home="true"] #chips-wrapper,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"][data-ot-page-home="true"] #header.ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"][data-ot-page-home="true"] ytd-rich-grid-renderer > #header,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"] ytd-browse[page-subtype="home"] ytd-feed-filter-chip-bar-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"] ytd-browse[page-subtype="home"] #chips-wrapper,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"] ytd-browse[page-subtype="home"] #header.ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-hide-home-chips="true"] #chips-content {
+  display: none !important;
+}
+
+/* ── Featured / Promotional Banners ──────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] ytd-rich-item-renderer:has(ytd-ad-slot-renderer),
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] ytd-promotional-video-renderer,
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] ytd-banner-promo-renderer,
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] ytd-statement-banner-renderer,
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] ytd-channel-featured-video-renderer,
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] ytd-primetime-promo-renderer,
+html[data-ot-enabled="true"][data-ot-hide-featured-banners="true"] #masthead-ad {
+  display: none !important;
+}
+
+/* ── Clean Home: Search Only ─────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"][data-ot-page-home="true"] ytd-browse #primary,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"][data-ot-page-home="true"] ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"][data-ot-page-home="true"] ytd-feed-filter-chip-bar-renderer,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"][data-ot-page-home="true"] ytd-masthead #end,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"] ytd-browse[page-subtype="home"] #primary,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"] ytd-browse[page-subtype="home"] ytd-rich-grid-renderer,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"] ytd-browse[page-subtype="home"] ytd-feed-filter-chip-bar-renderer,
+html[data-ot-enabled="true"][data-ot-clean-home-search="true"] ytd-masthead #end {
+  display: none !important;
+}
+
+/* ── Shorts: Sidebar Navigation ──────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-shorts-nav="true"] ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-nav="true"] ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-nav="true"] ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-nav="true"] ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html[data-ot-enabled="true"][data-ot-hide-shorts-nav="true"] a#endpoint[title="Shorts"],
+html[data-ot-enabled="true"][data-ot-hide-shorts-nav="true"] a.ytd-mini-guide-entry-renderer[href^="/shorts"] {
+  display: none !important;
+}
+
+/* ── Shorts: Shelves on Home / Search / Channel ───────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-reel-shelf-renderer,
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-rich-shelf-renderer[is-shorts],
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-rich-section-renderer:has(a[href^="/shorts"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-reel-item-renderer,
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-video-renderer:has(a[href^="/shorts/"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-shelves="true"] [is-shorts] {
+  display: none !important;
+}
+
+/* ── Shorts: Tab on Channel Pages ────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-shorts-channel-tab="true"] yt-tab-shape[tab-title="Shorts"],
+html[data-ot-enabled="true"][data-ot-hide-shorts-channel-tab="true"] tp-yt-paper-tab:has(yt-tab-shape[tab-title="Shorts"]),
+html[data-ot-enabled="true"][data-ot-hide-shorts-channel-tab="true"] tp-yt-paper-tab:has(a[href*="/shorts"]) {
+  display: none !important;
+}
+
+/* ── Watch: Right Sidebar ─────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"] #secondary.ytd-watch-flexy,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"] ytd-watch-flexy #secondary,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"] #secondary-inner.ytd-watch-flexy,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"] ytd-watch-grid #secondary,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"] #related.ytd-watch-flexy,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"] #related,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-page-watch="true"] #secondary,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-page-watch="true"] #related {
+  display: none !important;
+}
+
+/* ── Watch: Center & Expand Player ───────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"] ytd-watch-flexy:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"] ytd-watch-grid:not([theater]):not([fullscreen]) #primary,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"][data-ot-page-watch="true"] ytd-watch-flexy #primary,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"][data-ot-page-watch="true"] ytd-watch-grid #primary,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"][data-ot-page-watch="true"] #primary {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"] ytd-watch-flexy:not([theater]):not([fullscreen]) #columns.ytd-watch-flexy,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"] ytd-watch-grid:not([theater]):not([fullscreen]) #columns,
+html[data-ot-enabled="true"][data-ot-hide-sidebar="true"][data-ot-center-player="true"][data-ot-page-watch="true"] #columns {
+  justify-content: center !important;
+}
+
+/* ── Watch: End-Screen Cards ─────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-endscreen="true"] .ytp-ce-element,
+html[data-ot-enabled="true"][data-ot-hide-endscreen="true"] .ytp-ce-covering-overlay,
+html[data-ot-enabled="true"][data-ot-hide-endscreen="true"] .ytp-endscreen-content {
+  display: none !important;
+}
+
+/* ── Watch: Info Cards ───────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-infocards="true"] .ytp-cards-teaser,
+html[data-ot-enabled="true"][data-ot-hide-infocards="true"] .ytp-cards-button,
+html[data-ot-enabled="true"][data-ot-hide-infocards="true"] .ytp-cards-teaser-text,
+html[data-ot-enabled="true"][data-ot-hide-infocards="true"] #cards-button {
+  display: none !important;
+}
+
+/* ── Watch: Live Chat ────────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-livechat="true"] ytd-live-chat-frame,
+html[data-ot-enabled="true"][data-ot-hide-livechat="true"] #chat.ytd-watch-flexy {
+  display: none !important;
+}
+
+/* ── Watch: Description ──────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-description="true"] ytd-text-inline-expander,
+html[data-ot-enabled="true"][data-ot-hide-description="true"] #description.ytd-watch-metadata,
+html[data-ot-enabled="true"][data-ot-hide-description="true"] ytd-watch-metadata #description {
+  display: none !important;
+}
+
+/* ── Watch: Action Buttons (Share, Clip, Thanks, Download) ───────────────── */
+html[data-ot-enabled="true"][data-ot-hide-actions="true"] ytd-button-renderer.style-text.ytd-menu-renderer,
+html[data-ot-enabled="true"][data-ot-hide-actions="true"] yt-button-view-model,
+html[data-ot-enabled="true"][data-ot-hide-actions="true"] #flexible-item-buttons,
+html[data-ot-enabled="true"][data-ot-hide-actions="true"] ytd-watch-metadata #actions .yt-flexible-actions-view-model {
+  display: none !important;
+}
+
+/* ── Watch: View & Like Counts ───────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-metrics="true"] #count.ytd-watch-metadata,
+html[data-ot-enabled="true"][data-ot-hide-metrics="true"] ytd-watch-metadata #count,
+html[data-ot-enabled="true"][data-ot-hide-metrics="true"] .ytp-view-count,
+html[data-ot-enabled="true"][data-ot-hide-metrics="true"] yt-formatted-string.ytd-video-view-count-renderer,
+html[data-ot-enabled="true"][data-ot-hide-metrics="true"] #vote-count-middle,
+html[data-ot-enabled="true"][data-ot-hide-metrics="true"] #text.ytd-toggle-button-renderer {
+  display: none !important;
+}
+
+/* ── Comments ────────────────────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-comments="true"] ytd-comments#comments,
+html[data-ot-enabled="true"][data-ot-hide-comments="true"] #comments.ytd-watch-flexy,
+html[data-ot-enabled="true"][data-ot-hide-comments="true"] ytd-watch-grid #comments,
+html[data-ot-enabled="true"][data-ot-hide-comments="true"] ytd-item-section-renderer:has(#comments),
+html[data-ot-enabled="true"][data-ot-hide-comments="true"] #comments,
+html[data-ot-enabled="true"][data-ot-hide-comments="true"][data-ot-page-watch="true"] #comments {
+  display: none !important;
+}
+
+html[data-ot-enabled="true"][data-ot-hide-comment-avatars="true"] ytd-comment-thread-renderer #author-thumbnail,
+html[data-ot-enabled="true"][data-ot-hide-comment-avatars="true"] ytd-comment-renderer #author-thumbnail {
+  display: none !important;
+}
+
+html[data-ot-enabled="true"][data-ot-hide-comment-replies="true"] ytd-comment-thread-renderer #replies,
+html[data-ot-enabled="true"][data-ot-hide-comment-replies="true"] ytd-comment-replies-renderer {
+  display: none !important;
+}
+
+/* ── Thumbnails: Blur Mode ───────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="blur"] ytd-thumbnail img,
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="blur"] yt-thumbnail-view-model img,
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="blur"] ytd-thumbnail yt-image {
+  filter: blur(12px) !important;
+  transform: scale(1.05);
+  overflow: hidden;
+}
+
+/* ── Thumbnails: Grayscale Mode ──────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="grayscale"] ytd-thumbnail img,
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="grayscale"] yt-thumbnail-view-model img,
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="grayscale"] ytd-thumbnail yt-image {
+  filter: grayscale(100%) !important;
+}
+
+/* ── Thumbnails: Hidden Mode ─────────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="hidden"] ytd-thumbnail,
+html[data-ot-enabled="true"][data-ot-thumbnail-mode="hidden"] yt-thumbnail-view-model {
+  display: none !important;
+}
+
+/* ── Thumbnails: Duration Badges ─────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-duration="true"] ytd-thumbnail-overlay-time-status-renderer,
+html[data-ot-enabled="true"][data-ot-hide-duration="true"] badge-shape {
+  display: none !important;
+}
+
+/* ── Titles: Force Lowercase (Anti-Clickbait) ────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-lowercase-titles="true"] #video-title,
+html[data-ot-enabled="true"][data-ot-lowercase-titles="true"] h1.ytd-watch-metadata yt-formatted-string,
+html[data-ot-enabled="true"][data-ot-lowercase-titles="true"] .yt-core-attributed-string,
+html[data-ot-enabled="true"][data-ot-lowercase-titles="true"] ytd-video-meta-block #video-title {
+  text-transform: lowercase !important;
+}
+
+/* ── Navigation: Notification Bell ──────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-notifications="true"] ytd-notification-topbar-button-renderer,
+html[data-ot-enabled="true"][data-ot-hide-notifications="true"] #notification-button,
+html[data-ot-enabled="true"][data-ot-hide-notifications="true"] ytd-topbar-menu-button-renderer:has(button[aria-label*="Notification"]),
+html[data-ot-enabled="true"][data-ot-hide-notifications="true"] ytd-topbar-menu-button-renderer:has(button[aria-label*="notification"]),
+html[data-ot-enabled="true"][data-ot-hide-notifications="true"] yt-icon-button:has(button[aria-label*="Notification"]) {
+  display: none !important;
+}
+
+/* ── Navigation: Explore Section ─────────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-explore="true"] ytd-guide-section-renderer:has(a[href*="/feed/trending"]),
+html[data-ot-enabled="true"][data-ot-hide-explore="true"] ytd-guide-section-renderer:has(a[href*="trending"]) {
+  display: none !important;
+}
+
+/* ── Navigation: More from YouTube ───────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-more-yt="true"] ytd-guide-section-renderer:has(a[href*="gaming"]),
+html[data-ot-enabled="true"][data-ot-hide-more-yt="true"] ytd-guide-section-renderer:has(a[href*="premium"]),
+html[data-ot-enabled="true"][data-ot-hide-more-yt="true"] ytd-guide-section-renderer:has(a[href*="music.youtube.com"]) {
+  display: none !important;
+}
+
+/* ── Navigation: Search Suggestions ─────────────────────────────────────── */
+html[data-ot-enabled="true"][data-ot-hide-search-suggestions="true"] .gstl_50.sbdd_a,
+html[data-ot-enabled="true"][data-ot-hide-search-suggestions="true"] div.ytSearchboxComponentSuggestionsContainer,
+html[data-ot-enabled="true"][data-ot-hide-search-suggestions="true"] ytd-searchbox[has-focus] ytd-search-suggestions,
+html[data-ot-enabled="true"][data-ot-hide-search-suggestions="true"] .ytSearchboxComponentInputBoxContainer ~ * {
+  display: none !important;
+}
+
+/* === [ADD START: Append to entrypoints/youtube.content/style.css] === */
+html[data-ot-enabled="true"][data-ot-time-exceeded="true"] ytd-player video {
+  visibility: hidden !important;
+}
+
+#ot-time-limit-overlay {
+  display: none;
+}
+
+html[data-ot-enabled="true"][data-ot-time-exceeded="true"] #ot-time-limit-overlay {
+  display: flex !important;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(9, 9, 11, 0.96);
+  backdrop-filter: blur(16px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #f4f4f5;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-align: center;
+  padding: 24px;
+}
+/* === [ADD END] === */
+
+/* === [ADD START: Append to bottom of entrypoints/youtube.content/style.css] === */
+#ot-study-toast {
+  position: fixed;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  z-index: 2147483647;
+  background: rgba(24, 24, 27, 0.95);
+  border: 1px solid #3f3f46;
+  color: #f4f4f5;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+#ot-study-toast[data-error="true"] {
+  border-color: #f43f5e;
+  color: #fda4af;
+}
+
+#ot-study-toast.ot-toast-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Minimalist Study Capture Buttons inside YouTube Player Controls */
+.ot-player-study-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+  height: 100%;
+  vertical-align: top;
+}
+
+html:not([data-ot-enabled="true"]) .ot-player-study-group,
+html[data-ot-study-buttons="false"] .ot-player-study-group {
+  display: none !important;
+}
+
+.ot-study-btn {
+  background: rgba(24, 24, 27, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e4e4e7;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ot-study-btn:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+  color: #6ee7b7;
+}
+/* === [ADD END] === */
+/*$vite$:1*/
